@@ -1,0 +1,16 @@
+# Ignore node_modules and environment files
+node_modules/
+.env
+
+# Logs and dependencies
+logs/
+*.log
+package-lock.json
+
+# macOS system files
+.DS_Store
+
+# Editor & OS files
+.vscode/
+.idea/
+
