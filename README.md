@@ -79,5 +79,5 @@ node src/index.js
 Feel free to submit issues and pull requests! Let's build this together. 🚀
 
 ## 📜 License
-MIT License. See `LICENSE` file for details.
+MIT License. See ` LICENSE ` file for details.
 
