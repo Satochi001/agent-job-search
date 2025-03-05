@@ -1,5 +1,6 @@
-const { Sequelize, Model } = require('sequelize');
-require('dotenv').config();
+const { Sequelize } = require('sequelize');
+require("dotenv").config();
+
 
 const sequelize  = new Sequelize(
             process.env.DB_NAME,
@@ -15,8 +16,23 @@ const sequelize  = new Sequelize(
             }
 );
 
+// import our job model
+
+const Job = require("./models/job"); 
+
+// function to get lastest jobs
+async function getLatestJobs(limit = 5) {
+  return await Job.findAll({
+    order: [[" createdAt", "DESC"]],
+    limit: limit,
+    attributes: ["title", "company", "link"],
+
+  });
+  
+}
+
 // Export Sequelize  intances  for app usaage
-module.exports = { sequelize };
+module.exports = { sequelize, Job, getLatestJobs};
 
 // Export config for Sequelize CLI
 module.exports.development= {
