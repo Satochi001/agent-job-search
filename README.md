@@ -1,6 +1,6 @@
 
 
-# Agent-Bot
+## Agent-Bot
 
 ## 🚀 Overview
 Agent-Bot is an intelligent automation system designed to search for freelance jobs dynamically across various platforms. It can fetch job listings via APIs or web scraping, process them, and store relevant data in a PostgreSQL database. The goal is to create a scalable and extendable job search assistant that can later integrate AI-driven automation, such as generating proposals or notifications via Telegram.
