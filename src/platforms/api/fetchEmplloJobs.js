@@ -2,17 +2,25 @@ const axios = require("axios");
 const Job = require("../../database/models/job");  // ✅ Correct path
 
 
-const EMPOLLO_API_URL = "https://empollo.com/api/v1";
+const EMPOLLO_API_URL = 'https://www.empllo.com/jobs';
 
 async function fetchEmpollojobs(){
     try {
         console.log("fetching jobs from Empollo...");
 
-        const response = await axios.get(EMPOLLO_API_URL, {
-            params: {
-            limit : 50
-        }});
-            const jobs = response.data;
+        const response = await axios.get(EMPOLLO_API_URL , {
+            params: { limit: 50 },
+            headers: {
+                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
+                "Accept": "application/json",
+                "Referer": "https://www.google.com",
+            }
+        });
+
+       
+
+
+        const jobs = response.data;
 
         if (!Array.isArray(jobs)) {  
             throw new Error("Invalid API response: Expected an array of jobs.");
@@ -37,7 +45,7 @@ async function fetchEmpollojobs(){
        return jobs.length;
     } catch(error){
         console.error("Error fetching jobs from empollo ", error.message);
-        return 
+        return  []
     }
 }
 

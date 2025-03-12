@@ -1,18 +1,23 @@
-const fetchEmpollojobs = require("./fetchEmpolloJobs");  // Ensure correct filename and path
+const fetchEmpollojobs = require("./fetchEmplloJobs");  // Ensure correct filename and path
+const fetchRemotejobs = require("./fetchRemotejobs");
 
 async function fetchAllJobs() {
     try {
-        console.log("Fetching jobs from all sources...");  // Fixed typo
+        console.log("Fetching jobs from all sources...");
 
-        await fetchEmpollojobs();  // Fetch jobs from Empollo
+        const empolloJobs = await fetchEmpollojobs() || [];
+        const remoteJobs = await fetchRemotejobs() || [];
 
-        console.log("Finished fetching jobs from all sources.");  // Fixed typo
+        console.log("Empollo Jobs:", empolloJobs.length);  // ✅ Debugging
+        console.log("Remote Jobs:", remoteJobs.length);    // ✅ Debugging
+
+        console.log("Finished fetching jobs from all sources.");
+
+        return [...empolloJobs, ...remoteJobs];  // ✅ Returns a proper array
     } catch (error) {
-        console.error("Error fetching jobs:", error.message);  // Handle errors
+        console.error("Error fetching jobs:", error.message);
+        return [];  // ✅ Always return an array
     }
 }
 
-// Remove this line if this is a module meant to be imported elsewhere
-// fetchAllJobs();  // Only use this for testing
-
-module.exports = fetchAllJobs;  // Fixed typo: `module.exports` instead of `module.export`
+module.exports = fetchAllJobs;

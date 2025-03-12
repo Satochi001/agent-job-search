@@ -19,6 +19,8 @@ const Job = JobModel(sequelize, Sequelize.DataTypes);  // ✅ Initialize model
 
 // Function to get latest jobs
 async function getLatestJobs(limit = 5) {
+  console.log("🔍 Fetching jobs from the DATABASE...");  // ✅ Add this log
+
   return await Job.findAll({
     order: [["createdAt", "DESC"]],  // ✅ Fixed typo (removed space)
     limit: limit,

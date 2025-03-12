@@ -1,5 +1,5 @@
 const TelegramBot = require("node-telegram-bot-api");
-const { getLatestJobs } = require("../database/db"); // adjust path if needed
+const fetchJobs = require("../platforms/api/fetchJobs");  // ✅ No destructuring needed
 require("dotenv").config();
 
 // Initialize bot with polling
@@ -15,13 +15,15 @@ bot.onText(/\/jobs/, async (msg) => {
     const chatid = msg.chat.id;
 
     try {
-        const jobs = await getLatestJobs(5) || []; // Ensure jobs is always an array
+        const jobs = await fetchJobs();  
 
-        if (jobs.length === 0) {
+        console.log("Jobs inside Telegram bot:", jobs);
+
+        if (!Array.isArray(jobs) || jobs.length === 0) {  // ✅ Ensure jobs is an array
             return bot.sendMessage(chatid, "No jobs available at this period of time.");
         }
 
-        let jobList = jobs.map((job) => 
+        const jobList = jobs.map((job) => 
             `📌 *${job.title}* at *${job.company}*\n🔗 [Apply Here](${job.link})`
         ).join("\n\n");
 
@@ -31,5 +33,6 @@ bot.onText(/\/jobs/, async (msg) => {
         bot.sendMessage(chatid, "⚠️ Error retrieving jobs. Try again later.");
     }
 });
+
 
 console.log("📢 Telegram bot is running...");

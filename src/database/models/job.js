@@ -14,20 +14,30 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Job.init({
-    title: { type: DataTypes.STRING, allowNull: false},
-    company: {type: DataTypes.STRING, allowNull: false},
-    location: {type: DataTypes.STRING, allowNull: false}, 
-    link: {type: DataTypes.STRING, allowNull: false},
-    companyWebsite: { type: DataTypes.STRING, allowNull: false},
+    title: { type: DataTypes.STRING, allowNull: false },
+    company: { type: DataTypes.STRING, allowNull: false },
+    location: { type: DataTypes.STRING, allowNull: false },
     description: DataTypes.TEXT,
     salary: DataTypes.STRING,
-    jobType: DataTypes.STRING,
-    datePosted: DataTypes.DATE,
-    applicationDeadline: DataTypes.DATE
+    link: { type: DataTypes.STRING },
+    companyWebsite: { type: DataTypes.STRING },
+    jobType: {  
+      type: DataTypes.STRING,  
+      field: "job_type"  // ✅ Ensure it matches the migration
+    },  
+    datePosted: {  
+      type: DataTypes.DATE,  
+      field: "date_posted"  // ✅ Ensure it matches the migration
+    },  
+    applicationDeadline: {  
+      type: DataTypes.DATE,  
+      field: "application_deadline"  // ✅ Ensure it matches the migration
+    },  
   }, {
     sequelize,
     modelName: 'Job', 
-    timestamps: true,  // adds a createAt & updateAt field
+    timestamps: true,
   });
+  
   return Job;
 };
