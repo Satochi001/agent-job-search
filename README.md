@@ -55,7 +55,7 @@ npm install
 
 ### 3️⃣ Set Up Environment Variables
 Create a `.env` file and configure your database:
-```env
+``` env
 DB_HOST=localhost
 DB_PORT=5432
 DB_USER=your_username
@@ -64,7 +64,7 @@ DB_NAME=agent_bot
 ```
 
 ### 4️⃣ Run the Application
-```bash
+``` bash
 node src/index.js
 ```
 
