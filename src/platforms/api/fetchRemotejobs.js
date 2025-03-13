@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { Job } = require("../../database/models");  // ✅ Ensure correct import
+const { Job } = require("../../database/models");  // Ensure correct import
 
 const REMOTE_API_URL = "http://remotive.io/api/remote-jobs";
 
@@ -15,7 +15,6 @@ async function fetchRemotejobs() {
             }
         });
 
-        // Debugging: Check if jobs exist
         if (!response.data || !Array.isArray(response.data.jobs)) {
             console.error("❌ Invalid API response: Expected an array of jobs.", response.data);
             return [];
@@ -34,18 +33,19 @@ async function fetchRemotejobs() {
             applicationDeadline: job.expiry_date ? new Date(job.expiry_date) : null,
         }));
 
+        console.log("Debugging Jobs Array:", jobs);
+
         if (!Job.bulkCreate) {
             console.error("❌ Job.bulkCreate is not a function. Ensure Job is a Sequelize model.");
             return [];
         }
 
-        // ✅ Use bulkCreate if Job is valid
         await Job.bulkCreate(jobs, {
             updateOnDuplicate: ["title", "company", "location", "link", "companyWebsite", "description", "salary", "jobType", "datePosted", "applicationDeadline"]
         });
 
         console.log(`✅ Remote-job: Successfully stored ${jobs.length} jobs.`);
-        return jobs.length;
+        return jobs;  // ✅ Return array instead of number
 
     } catch (error) {
         console.error("❌ Error fetching jobs from remote-jobs:", error.message);
