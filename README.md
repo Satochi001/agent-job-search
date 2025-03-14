@@ -11,6 +11,7 @@ Agent-Bot is an intelligent automation system designed to search for freelance j
 - **PostgreSQL Integration**: Stores job listings for efficient tracking and filtering.
 - **Modular Architecture**: Designed with clean separation of concerns.
 - **Scalability**: Easily extendable to include AI-generated responses and more integrations.
+- **Interfere**: Telegram Bot Intergration: sends data to telegram. 
 - **(Upcoming) Telegram Bot Integration**: Sends job alerts directly to the user.
 
 ## 🛠️ Tech Stack
@@ -18,6 +19,7 @@ Agent-Bot is an intelligent automation system designed to search for freelance j
 - **Database**: PostgreSQL (Sequelize ORM)
 - **Automation**: Puppeteer (for web scraping), node-cron (for scheduling)
 - **Logging**: Winston
+- - **jest** : Testing
 - **Caching**: Redis (for performance optimization)
 - **Environment Management**: dotenv
 
