@@ -15,7 +15,7 @@ Agent-Bot is an intelligent automation system designed to search for freelance j
 - **(Upcoming) Telegram Bot Integration**: Sends job alerts directly to the user.
 
 ##  Tech Stack
-- **Backend**: Node.js (Express.js)
+- **Backend**: Node.js (Express.js) / pocketbase 
 - **Database**: PostgreSQL (Sequelize ORM)
 - **Automation**: Puppeteer (for web scraping), node-cron (for scheduling)
 - **Logging**: Winston
