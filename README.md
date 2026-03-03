@@ -76,8 +76,8 @@ node src/index.js
 - [ ] Integrate AI-powered proposal generation
 - [ ] Implement Telegram bot for job notifications
 
-## 🤝 Contributing
-Feel free to submit issues and pull requests! Let's build this together. 🚀
+##  Contributing
+Feel free to submit issues and pull requests! Let's build this together. 
 
 ## 📜 License
 MIT License. See ` LICENSE ` file for details.
